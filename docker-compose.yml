@@ -1,0 +1,14 @@
+services:
+  mongodb:
+    image: mongo:5.0
+    ports:
+      - 27017:27017
+    volumes:
+      - /datawork/db:/data/db
+    restart: unless-stopped
+    env_file:
+      - mongo.conf
+#    environment:
+#     MONGO_INITDB_ROOT_USERNAME: root
+#     MONGO_INITDB_ROOT_PASSWORD: root
+    command: [--auth]
