@@ -12,3 +12,15 @@ services:
 #     MONGO_INITDB_ROOT_USERNAME: root
 #     MONGO_INITDB_ROOT_PASSWORD: root
     command: [--auth]
+  redis:
+    image: redis:6
+    container_name: redis
+    restart: unless-stopped
+    volumes:
+      - redis.conf:/usr/local/etc/redis/redis.conf
+    ports:
+      - 6379:6379
+    command: redis-server /usr/local/etc/redis/redis.conf
+volumes:
+  db:
+  redis.conf:
